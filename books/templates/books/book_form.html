@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Book</title>
+</head>
+<body>
+    <h1>Create a New Book</h1>
+    
+    <!-- Display form errors if any -->
+    {% if form.errors %}
+        <ul>
+            {% for field in form %}
+                {% if field.errors %}
+                    <li>{{ field.label }}: {{ field.errors|striptags }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Form to create a new book -->
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Render form fields -->
+        <p>
+            <label for="id_title">Title:</label>
+            {{ form.title }}
+        </p>
+        <p>
+            <label for="id_subtitle">Subtitle:</label>
+            {{ form.subtitle }}
+        </p>
+        <p>
+            <label for="id_author">Author:</label>
+            {{ form.author }}
+        </p>
+        <p>
+            <label for="id_isbn">ISBN:</label>
+            {{ form.isbn }}
+        </p>
+
+        <!-- Submit button -->
+        <button type="submit">Create Book</button>
+    </form>
+</body>
+</html>

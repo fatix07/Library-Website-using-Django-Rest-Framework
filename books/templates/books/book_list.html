@@ -1,10 +1,17 @@
 <!-- books/templates/books/book_list.html -->
-<h1>All books</h1>
+<h1>All Books</h1>
+
+<!-- Button to access the create book page -->
+ <button type="button" class="btn btn-primary"><a href="{% url 'create' %}" class="btn btn-primary">Add New Book</a></button>
+
+
 {% for book in book_list %}
-<ul>
-<li>Title: {{ book.title }}</li>
-<li>Subtitle: {{ book.subtitle }}</li>
-<li>Author: {{ book.author }}</li>
-<li>ISBN: {{ book.isbn }}</li>
-</ul>
+    <ul>
+        <li>Title: {{ book.title }}</li>
+        <li>Subtitle: {{ book.subtitle }}</li>
+        <li>Author: {{ book.author }}</li>
+        <li>ISBN: {{ book.isbn }}</li>
+    </ul>
+{% empty %}
+    <p>No books available.</p>
 {% endfor %}
